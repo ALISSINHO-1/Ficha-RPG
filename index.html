@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha RPG Digital - BIG</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <header class="character-header">
+        <div class="profile-pic-container">
+            <img src="image_0.png.png" alt="BIG" class="profile-pic">
+        </div>
+        <div class="header-text">
+            <h1 contenteditable="true">BIG (Alisson)</h1>
+            <p contenteditable="true">COMBATENTE DE IMPACTO • BIKER</p>
+            <div class="level-badge">
+                NÍVEL <span contenteditable="true" id="level-val">3</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="dice-roller card">
+        <div class="section-label">🎲 Rolador de Dados</div>
+        <div class="dice-controls">
+            <input type="number" id="dice-count" value="4">
+            <span>d20 → maior</span>
+            <button class="btn-yellow" onclick="rollAttributes()">Rolar Atributo</button>
+            <button class="btn-blue" onclick="rollD6()">Dano Manopla (1d6+3)</button>
+        </div>
+        <div id="dice-result" class="dice-result">Clique em um botão para rolar...</div>
+    </section>
+
+    <div class="bars-section">
+        <div class="stat-control card-stat">
+            <div class="label-row">
+                <span>❤️ VIDA (CON)</span>
+                <span class="inputs">
+                    <input type="number" id="hp-current" value="42" oninput="updateUI()"> / 42
+                </span>
+            </div>
+            <div class="bar-container">
+                <div id="hp-fill" class="bar-fill hp-bar"></div>
+            </div>
+            <div class="button-group quick-math">
+                <button onclick="quickMath('hp', -5)">-5</button>
+                <button onclick="quickMath('hp', -1)">-1</button>
+                <button onclick="quickMath('hp', 1)">+1</button>
+                <button onclick="quickMath('hp', 5)">+5</button>
+            </div>
+        </div>
+
+        <div class="stat-control card-stat">
+            <div class="label-row">
+                <span>⚡ ENERGIA (INT)</span>
+                <span class="inputs">
+                    <input type="number" id="en-current" value="24" oninput="updateUI()"> / 24
+                </span>
+            </div>
+            <div class="bar-container">
+                <div id="en-fill" class="bar-fill en-bar"></div>
+            </div>
+            <div class="button-group quick-math">
+                <button onclick="quickMath('en', -5)" class="btn-en">-5</button>
+                <button onclick="quickMath('en', -1)" class="btn-en">-1</button>
+                <button onclick="quickMath('en', 1)" class="btn-en">+1</button>
+                <button onclick="quickMath('en', 5)" class="btn-en">+5</button>
+            </div>
+        </div>
+
+        <div class="stat-control card-stat">
+            <div class="label-row">
+                <span>✦ EXPERIÊNCIA</span>
+                <span class="inputs">
+                    <input type="number" id="xp-current" value="11" oninput="updateUI()"> / 15
+                </span>
+            </div>
+            <div class="bar-container">
+                <div id="xp-fill" class="bar-fill xp-bar"></div>
+            </div>
+            <div class="button-group quick-math">
+                <button style="flex:1" onclick="quickMath('xp', -1)">-1</button>
+                <button style="flex:1" onclick="quickMath('xp', 1)">+1</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card" onclick="setDiceRoller(4, 'FORÇA')">
+            <span class="label">FORÇA</span>
+            <div class="stat-values-edit">
+                <strong>4</strong> <small>/ 10</small>
+            </div>
+            <small class="mod-label">+4 MOD</small>
+        </div>
+        <div class="stat-card" onclick="setDiceRoller(1, 'DESTREZA')">
+            <span class="label">DESTREZA</span>
+            <div class="stat-values-edit">
+                <strong>1</strong> <small>/ 3</small>
+            </div>
+            <small class="roll-hint">Clique p/ rolar</small>
+        </div>
+        <div class="stat-card" onclick="setDiceRoller(3, 'CONST.')">
+            <span class="label">CONSTITUIÇÃO</span>
+            <div class="stat-values-edit">
+                <strong>3</strong> <small>/ 7</small>
+            </div>
+            <small class="roll-hint">Clique p/ rolar</small>
+        </div>
+        <div class="stat-card" onclick="setDiceRoller(1, 'INTEL.')">
+            <span class="label">INTELIGÊNCIA</span>
+            <div class="stat-values-edit">
+                <strong>1</strong> <small>/ 5</small>
+            </div>
+            <small class="roll-hint">Clique p/ rolar</small>
+        </div>
+    </div>
+
+    <div class="grid-2col">
+        <section>
+            <div class="section-label-alt">⚔️ ITENS EQUIPADOS</div>
+            <div class="card item-box">
+                <strong>🥊 Manoplas Turbo-Jato (Custom)</strong>
+                <div class="tag-row">
+                    <span class="tag red">PESADO</span>
+                    <span class="tag red">IMPACTO</span>
+                    <span class="tag blue" onclick="useAbilityAuto('Ignição', 10, 0)" style="cursor:pointer">10 EN EM IGNIÇÃO</span>
+                </div>
+                <p>• Teste: Força | Dano: 1d6 + 3</p>
+                <div class="special-action" onclick="useAbilityAuto('Avanço Meteoro', 13, 0)">
+                    🚀 <strong>Avanço Meteoro (13 EN):</strong> Dobra movimento...
+                </div>
+            </div>
+
+            <div class="section-label-alt">🥤 RECURSOS</div>
+            <div class="card resource-box">
+                <strong>Estoque de Energético</strong>
+                <div class="res-row">
+                    <span id="stock-display">6 / 6</span>
+                    <div class="res-btns">
+                        <button onclick="useAbilityAuto('Energético', -5, 0)">Usar</button>
+                        <button onclick="quickMath('stock', 1)">Repor</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-label-alt">✦ HABILIDADES</div>
+            <div class="ability-list">
+                <div class="card ab-box" onclick="useAbilityAuto('Energizado', -10, 7)">
+                    <div class="ab-head">⚡ Energizado <span class="tag-passivo">Passivo</span></div>
+                    <p>Ganha 10 EN. Toma 7 de dano.</p>
+                </div>
+                <div class="card ab-box" onclick="useAbilityAuto('Muralha Inabalável', 8, 0)">
+                    <div class="ab-head">🛡️ Muralha Inabalável <span class="tag-en">8 EN</span></div>
+                    <p>Reduz dano físico em 2. Imovível.</p>
+                </div>
+                <div class="card ab-box" onclick="useAbilityAuto('Paciência Curta', 3, 0)">
+                    <div class="ab-head">💢 Paciência Curta <span class="tag-en">3 EN</span></div>
+                    <p>Reação: Interrompe movimento inimigo.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
