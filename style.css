@@ -26,7 +26,7 @@ input[type=number] { -moz-appearance: textfield; appearance: textfield; }
 /* HEADER */
 .character-header { display: flex; align-items: center; gap: 20px; border-bottom: 2px solid var(--red); padding-bottom: 20px; margin-bottom: 20px; }
 .profile-pic-container { width: 110px; height: 110px; border-radius: 50%; border: 3px solid var(--red); overflow: hidden; box-shadow: 0 0 15px rgba(255, 62, 62, 0.3); }
-.profile-pic { width: 100%; height: 100%; object-fit: cover; }
+.profile-pic { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 .header-text h1 { font-family: 'Changa'; font-size: 2.2rem; margin: 0; }
 .level-badge { border: 2px solid var(--yellow); color: var(--yellow); padding: 5px 15px; border-radius: 8px; font-weight: bold; margin-top: 10px; display: inline-block; }
 
