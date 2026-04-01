@@ -1,14 +1,46 @@
+// Estado global do nível e XP máximo
+let currentLevel = 3;
+let xpMax = 15;
+
 function updateUI() {
     const bars = [
         { id: 'hp', max: 42 },
         { id: 'en', max: 24 },
-        { id: 'xp', max: 15 }
+        { id: 'xp', max: xpMax }
     ];
     bars.forEach(bar => {
         const val = parseInt(document.getElementById(`${bar.id}-current`).value) || 0;
         const fill = document.getElementById(`${bar.id}-fill`);
         if (fill) fill.style.width = Math.min(100, (val / bar.max) * 100) + '%';
     });
+    // Atualiza o label de XP máximo
+    const xpLabel = document.getElementById('xp-max-label');
+    if (xpLabel) xpLabel.textContent = xpMax;
+}
+
+function levelUp() {
+    const currentXp = parseInt(document.getElementById('xp-current').value) || 0;
+    if (currentXp < xpMax) {
+        document.getElementById('dice-result').innerHTML =
+            `<span style="color:var(--red)">⚠️ XP INSUFICIENTE! Você precisa de <strong>${xpMax} XP</strong> para subir de nível.</span>`;
+        return;
+    }
+
+    currentLevel++;
+    xpMax += 5;
+
+    document.getElementById('level-val').textContent = currentLevel;
+    document.getElementById('xp-current').value = 0;
+    updateUI();
+
+    document.getElementById('dice-result').innerHTML =
+        `⬆️ <strong style="color:var(--yellow)">NÍVEL ${currentLevel} ALCANÇADO!</strong><br>
+        <small>XP zerado. Próximo nível requer <strong>${xpMax} XP</strong>.</small>`;
+
+    // Animação flash no badge de nível
+    const badge = document.querySelector('.level-badge');
+    badge.classList.add('level-up-flash');
+    setTimeout(() => badge.classList.remove('level-up-flash'), 1000);
 }
 
 function quickMath(stat, val) {

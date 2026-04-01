@@ -17,8 +17,11 @@
         <div class="header-text">
             <h1 contenteditable="true">BIG (Alisson)</h1>
             <p contenteditable="true">COMBATENTE DE IMPACTO • BIKER</p>
-            <div class="level-badge">
-                NÍVEL <span contenteditable="true" id="level-val">3</span>
+            <div class="level-area">
+                <div class="level-badge">
+                    NÍVEL <span id="level-val">3</span>
+                </div>
+                <button class="btn-levelup" onclick="levelUp()">⬆ SUBIR DE NÍVEL</button>
             </div>
         </div>
     </header>
@@ -75,7 +78,7 @@
             <div class="label-row">
                 <span>✦ EXPERIÊNCIA</span>
                 <span class="inputs">
-                    <input type="number" id="xp-current" value="11" oninput="updateUI()"> / 15
+                    <input type="number" id="xp-current" value="11" oninput="updateUI()"> / <span id="xp-max-label">15</span>
                 </span>
             </div>
             <div class="bar-container">
@@ -166,6 +169,24 @@
             </div>
         </section>
     </div>
+    <section class="notes-section">
+        <div class="section-label-notes">📝 ANOTAÇÕES — ITENS, HABILIDADES & OBSERVAÇÕES</div>
+        <div class="notes-grid">
+            <div class="note-card">
+                <div class="note-header">🎒 Itens / Inventário</div>
+                <textarea class="note-area" placeholder="Adicione itens, equipamentos, consumíveis..."></textarea>
+            </div>
+            <div class="note-card">
+                <div class="note-header">✦ Novas Habilidades</div>
+                <textarea class="note-area" placeholder="Habilidades desbloqueadas, passivas, especiais..."></textarea>
+            </div>
+            <div class="note-card full-width">
+                <div class="note-header">📋 Observações Gerais</div>
+                <textarea class="note-area short" placeholder="Missões, aliados, inimigos, lembretes de sessão..."></textarea>
+            </div>
+        </div>
+    </section>
+
 </div>
 
 <script src="script.js"></script>

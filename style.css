@@ -74,3 +74,77 @@ input[type=number] { -moz-appearance: textfield; appearance: textfield; }
 /* BOTÕES */
 .btn-yellow { background: transparent; border: 1px solid var(--yellow); color: var(--yellow); padding: 8px 15px; cursor: pointer; }
 .btn-blue { background: transparent; border: 1px solid var(--blue); color: var(--blue); padding: 8px 15px; cursor: pointer; }
+
+/* LEVEL UP */
+.level-area { display: flex; align-items: center; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+.btn-levelup {
+    background: transparent;
+    border: 2px solid var(--yellow);
+    color: var(--yellow);
+    padding: 5px 14px;
+    cursor: pointer;
+    font-family: 'Changa';
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: 0.2s;
+}
+.btn-levelup:hover { background: var(--yellow); color: #000; }
+
+@keyframes flashLevel {
+    0%, 100% { border-color: var(--yellow); color: var(--yellow); }
+    50% { border-color: #fff; color: #fff; box-shadow: 0 0 20px var(--yellow); }
+}
+.level-up-flash { animation: flashLevel 0.3s ease 3; }
+
+/* SEÇÃO DE ANOTAÇÕES */
+.notes-section {
+    margin-top: 25px;
+    border-top: 2px solid var(--border);
+    padding-top: 20px;
+}
+.section-label-notes {
+    color: var(--green);
+    font-family: 'Changa';
+    font-size: 1rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.notes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+.note-card {
+    background: var(--card-dark);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: 8px;
+    padding: 14px;
+}
+.note-card.full-width { grid-column: 1 / -1; }
+.note-header {
+    color: var(--green);
+    font-family: 'Changa';
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.note-area {
+    width: 100%;
+    min-height: 120px;
+    background: #08080a;
+    border: 1px solid #222;
+    border-radius: 5px;
+    color: #ccc;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.85rem;
+    padding: 10px;
+    resize: vertical;
+    box-sizing: border-box;
+    line-height: 1.6;
+}
+.note-area.short { min-height: 80px; }
+.note-area:focus { outline: none; border-color: var(--green); box-shadow: 0 0 8px rgba(46, 213, 115, 0.2); }
+.note-area::placeholder { color: #3a3a42; }
