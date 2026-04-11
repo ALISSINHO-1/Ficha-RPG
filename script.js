@@ -44,7 +44,7 @@ function rollAttributes() {
 
 function rollD6() {
     const d = Math.floor(Math.random() * 8) + 1;
-    document.getElementById('dice-result').innerHTML = `Dano Manopla: ${d} + 5 = <strong>${d+5}</strong>`;
+    document.getElementById('dice-result').innerHTML = `Dano Manopla: ${d} + 5 = <strong>${d+5} Impacto</strong>`;
 }
 
 function setDiceRoller(val, name) {

@@ -7,7 +7,6 @@
     --orange: #ff6a00;
     --purple: #a55eea;
     --border: #25252b;
-    --text-gray: #a0a0a5;
 }
 
 body {
@@ -44,11 +43,12 @@ body {
     border-radius: 50%;
     overflow: hidden;
     border: 3px solid var(--red);
+    background: #222; /* Fundo caso a imagem falhe */
 }
 
 .profile-pic { width: 100%; height: 100%; object-fit: cover; }
 
-/* BARRAS */
+/* BARRAS DE STATUS */
 .bars-section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -68,9 +68,10 @@ body {
     background: transparent;
     border: none;
     color: white;
-    width: 40px;
+    width: 45px;
     text-align: right;
     font-weight: bold;
+    font-size: 1rem;
 }
 
 .bar-container {
@@ -78,12 +79,13 @@ body {
     height: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
+    border: 1px solid #333;
 }
 
 .bar-fill { height: 100%; border-radius: 5px; transition: 0.4s; }
-.hp-bar { background: var(--red); }
-.en-bar { background: var(--blue); }
-.mag-bar { background: var(--purple); }
+.hp-bar { background: var(--red); box-shadow: 0 0 10px var(--red); }
+.en-bar { background: var(--blue); box-shadow: 0 0 10px var(--blue); }
+.mag-bar { background: var(--purple); box-shadow: 0 0 10px var(--purple); }
 
 .quick-math { display: flex; gap: 5px; }
 .quick-math button {
@@ -93,6 +95,7 @@ body {
     color: white;
     cursor: pointer;
     font-size: 0.7rem;
+    padding: 4px;
 }
 
 /* ATRIBUTOS */
@@ -107,20 +110,27 @@ body {
 }
 .stat-card strong { font-size: 2rem; color: var(--yellow); display: block; }
 
-/* PERSONA */
+/* PERSONA SECTION */
 .persona-section {
     background: var(--card-dark);
     padding: 20px;
     border-radius: 12px;
     border: 2px solid var(--orange);
+    box-shadow: inset 0 0 20px rgba(255, 106, 0, 0.1);
 }
 
 .persona-header { display: flex; gap: 20px; align-items: center; margin-bottom: 20px; }
-.persona-img { width: 120px; border-radius: 8px; border: 2px solid var(--orange); }
-.tag { font-size: 0.7rem; padding: 3px 7px; border-radius: 4px; font-weight: bold; }
-.tag.fire { color: var(--orange); border: 1px solid var(--orange); }
-.tag.wind { color: #2ed573; border: 1px solid #2ed573; }
-.tag.light { color: #fff; border: 1px solid #fff; }
+.persona-img { 
+    width: 130px; 
+    border-radius: 8px; 
+    border: 2px solid var(--orange); 
+    box-shadow: 0 0 15px rgba(255, 106, 0, 0.5);
+}
+
+.tag { font-size: 0.7rem; padding: 3px 7px; border-radius: 4px; font-weight: bold; text-transform: uppercase; }
+.tag.fire { color: var(--orange); border: 1px solid var(--orange); background: rgba(255,106,0,0.1); }
+.tag.wind { color: #2ed573; border: 1px solid #2ed573; background: rgba(46,213,115,0.1); }
+.tag.light { color: #fff; border: 1px solid #fff; background: rgba(255,255,255,0.1); }
 
 .persona-abilities { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 .ab-box-mag {
@@ -129,13 +139,19 @@ body {
     border-radius: 8px;
     border-left: 4px solid var(--purple);
     cursor: pointer;
+    transition: 0.2s;
 }
+.ab-box-mag:hover { background: #25252d; }
 .ab-head { display: flex; justify-content: space-between; font-weight: bold; color: var(--yellow); }
+.tag-mag { color: var(--purple); font-size: 0.8rem; }
 .special-orange { border-left-color: var(--orange); }
-.special-sun { border-left-color: var(--yellow); background: linear-gradient(to right, #1a1a20, #3d2b00); }
+.special-sun { 
+    border-left-color: var(--yellow); 
+    background: linear-gradient(to right, #1a1a20, #3d2b00); 
+}
 
-/* DADOS */
-.dice-roller { background: var(--card-dark); padding: 20px; border-radius: 12px; }
+/* ROLADOR */
+.dice-roller { background: var(--card-dark); padding: 20px; border-radius: 12px; border: 1px solid var(--border); }
 .dice-result {
     background: #000;
     padding: 15px;
@@ -144,14 +160,16 @@ body {
     color: var(--yellow);
     font-size: 1.2rem;
     border: 1px solid var(--yellow);
+    min-height: 30px;
 }
 
 .note-area {
     width: 100%;
-    height: 100px;
-    background: var(--card-dark);
-    color: white;
+    height: 120px;
+    background: #08080a;
+    color: #ccc;
     border: 1px solid var(--border);
-    padding: 10px;
+    padding: 15px;
     border-radius: 8px;
+    box-sizing: border-box;
 }
