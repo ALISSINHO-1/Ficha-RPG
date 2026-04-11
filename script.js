@@ -33,7 +33,7 @@ function useAbilityAuto(name, enCost, hpCost, magCost) {
     quickMath('hp', -hpCost);
     quickMath('mag', -magCost);
 
-    document.getElementById('dice-result').innerHTML = `✨ <strong>${name.toUpperCase()}</strong> ATIVADA!`;
+    document.getElementById('dice-result').innerHTML = `🔥 <strong>${name.toUpperCase()}</strong> ATIVADA!`;
 }
 
 function rollAttributes() {
@@ -44,7 +44,7 @@ function rollAttributes() {
 
 function rollD6() {
     const d = Math.floor(Math.random() * 8) + 1;
-    document.getElementById('dice-result').innerHTML = `Dano Manopla: ${d} + 5 = <strong>${d+5} Impacto</strong>`;
+    document.getElementById('dice-result').innerHTML = `Dano: ${d} + 5 = <strong>${d+5}</strong>`;
 }
 
 function setDiceRoller(val, name) {

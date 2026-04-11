@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ficha RPG - BIG & HELL BIKER</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -81,21 +82,13 @@
         </div>
 
         <div class="persona-abilities">
-            <div class="ab-box-mag" onclick="useAbilityAuto('Agilao', 0, 0, 8)">
-                <div class="ab-head">🔥 Agilao <span class="tag-mag">8 MAG</span></div>
-                <p>Dano de fogo médio (2d8).</p>
-            </div>
-            <div class="ab-box-mag" onclick="useAbilityAuto('Mudoon', 0, 8, 8)">
-                <div class="ab-head">💀 Mudoon <span class="tag-mag">8 MAG / 8 HP</span></div>
-                <p>Morte Instantânea se alvo < 4.</p>
-            </div>
-            <div class="ab-box-mag special-orange" onclick="useAbilityAuto('Reação de Tungstênio', 0, 0, 20)">
+            <div class="ab-box-mag" onclick="useAbilityAuto('Reação de Tungstênio', 0, 0, 20)">
                 <div class="ab-head">🛡️ Reação de Tungstênio <span class="tag-mag">20 MAG</span></div>
                 <p>Reflete dano integral + 4. Dano recebido 0.</p>
             </div>
-            <div class="ab-box-mag special-sun" onclick="useAbilityAuto('O Único (Soco Solar)', 20, 0, 40)">
+            <div class="ab-box-mag special-sun" onclick="useAbilityAuto('Soco Solar', 20, 0, 40)">
                 <div class="ab-head">☀️ Soco Solar <span class="tag-mag">40 MAG / 20 EN</span></div>
-                <p>Trunfo: 1d20 + 5d12 + 4. Ignora Defesa.</p>
+                <p>1d20 + 5d12 + 4. Ignora Defesa.</p>
             </div>
         </div>
     </section>
@@ -106,10 +99,10 @@
             <button class="btn-yellow" onclick="rollAttributes()">Rolar Atributo</button>
             <button class="btn-blue" onclick="rollD6()">Dano Manopla</button>
         </div>
-        <div id="dice-result" class="dice-result">Clique para rolar...</div>
+        <div id="dice-result" class="dice-result">Resultado...</div>
     </section>
 
-    <textarea class="note-area" placeholder="Inventário e Notas..."></textarea>
+    <textarea class="note-area" placeholder="Notas e Itens..."></textarea>
 </div>
 
 <script src="script.js"></script>
