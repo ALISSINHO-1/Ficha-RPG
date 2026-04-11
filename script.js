@@ -1,9 +1,13 @@
+let xpMax = 25;
+
 function updateUI() {
     const bars = [
         { id: 'hp', max: 44 },
         { id: 'en', max: 34 },
-        { id: 'mag', max: 152 }
+        { id: 'mag', max: 152 },
+        { id: 'xp', max: xpMax }
     ];
+    
     bars.forEach(bar => {
         const input = document.getElementById(`${bar.id}-current`);
         const fill = document.getElementById(`${bar.id}-fill`);
@@ -12,6 +16,7 @@ function updateUI() {
             fill.style.width = Math.min(100, (val / bar.max) * 100) + '%';
         }
     });
+    document.getElementById('xp-max-label').textContent = xpMax;
 }
 
 function quickMath(stat, val) {
@@ -22,29 +27,57 @@ function quickMath(stat, val) {
     }
 }
 
+function resetStat(stat) {
+    const input = document.getElementById(`${stat}-current`);
+    if (input) {
+        input.value = 0;
+        updateUI();
+    }
+}
+
+function rollMultiple(sides) {
+    const count = parseInt(document.getElementById('dice-count').value) || 1;
+    let total = 0;
+    let rolls = [];
+    for (let i = 0; i < count; i++) {
+        let r = Math.floor(Math.random() * sides) + 1;
+        rolls.push(r);
+        total += r;
+    }
+    document.getElementById('dice-result').innerHTML = `🎲 D${sides}: <strong>${total}</strong> <small>(${rolls.join('+')})</small>`;
+}
+
 function useAbilityAuto(name, enCost, hpCost, magCost) {
     const curEn = parseInt(document.getElementById('en-current').value);
     const curMag = parseInt(document.getElementById('mag-current').value);
-
-    if (enCost > 0 && curEn < enCost) return alert("❌ ENERGIA INSUFICIENTE!");
-    if (magCost > 0 && curMag < magCost) return alert("❌ MAGIA INSUFICIENTE!");
-
+    if (enCost > 0 && curEn < enCost) return alert("Energia insuficiente!");
+    if (magCost > 0 && curMag < magCost) return alert("Magia insuficiente!");
     quickMath('en', -enCost);
-    quickMath('hp', -hpCost);
     quickMath('mag', -magCost);
-
-    document.getElementById('dice-result').innerHTML = `🔥 <strong>${name.toUpperCase()}</strong> EXECUTADA!`;
+    document.getElementById('dice-result').innerHTML = `✨ Usou: <strong>${name}</strong>`;
 }
 
-function rollAttributes() {
-    const count = document.getElementById('dice-count').value;
-    let rolls = Array.from({length: count}, () => Math.floor(Math.random() * 20) + 1);
-    document.getElementById('dice-result').innerHTML = `Dados: [${rolls.join(', ')}] | Maior: <strong>${Math.max(...rolls)}</strong>`;
+function levelUp() {
+    const curXp = parseInt(document.getElementById('xp-current').value) || 0;
+    if (curXp < xpMax) return alert("XP insuficiente!");
+    let lvl = document.getElementById('level-val');
+    lvl.textContent = parseInt(lvl.textContent) + 1;
+    xpMax += 5;
+    document.getElementById('xp-current').value = 0;
+    updateUI();
 }
 
-function rollD6() {
-    const d = Math.floor(Math.random() * 8) + 1; // 1d8
-    document.getElementById('dice-result').innerHTML = `👊 Impacto: (${d}) + 5 = <strong>${d+5}</strong>`;
+// Salva o texto automaticamente para não sumir ao atualizar
+function setupAutoSave() {
+    const areas = ['inv-area', 'notes-area'];
+    areas.forEach(id => {
+        const el = document.getElementById(id);
+        el.value = localStorage.getItem(id) || "";
+        el.addEventListener('input', () => localStorage.setItem(id, el.value));
+    });
 }
 
-window.onload = updateUI;
+window.onload = () => {
+    updateUI();
+    setupAutoSave();
+};

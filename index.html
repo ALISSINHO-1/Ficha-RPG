@@ -3,107 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fichas Duplas - BIG & HELL BIKER</title>
+    <title>Ficha RPG - BIG & HELL BIKER</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="main-wrapper">
-    
-    <div class="sheet-panel big-panel">
-        <header class="panel-header">
-            <div class="profile-pic-container">
-                <img src="image_0.png.jpg" alt="BIG" class="profile-pic">
+<div class="layout-wrapper">
+    <aside class="sidebar side-left">
+        <div class="sidebar-box">
+            <h3>💪 PONTOS FORTES</h3>
+            <ul>
+                <li><strong>Super Força:</strong> Consegue estourar paredes com facilidade.</li>
+                <li><strong>Honra de Peso:</strong> Piadas sobre seu peso resultam em golpes sem piedade.</li>
+            </ul>
+        </div>
+        <div class="sidebar-box">
+            <h3>⚠️ PONTOS FRACOS</h3>
+            <ul>
+                <li><strong>Lentidão:</strong> Movimentação limitada, mesmo com socos velozes.</li>
+                <li><strong>Fúria:</strong> Perde a paciência fácil em combate, perdendo a razão.</li>
+            </ul>
+        </div>
+        <div class="sidebar-box">
+            <h3>🎒 INVENTÁRIO (BIG)</h3>
+            <textarea class="side-area" id="inv-area" placeholder="Digite os itens do Big aqui..."></textarea>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <section class="level-xp-section">
+            <div class="level-control">
+                <span>NÍVEL</span><strong id="level-val">5</strong>
+                <button class="btn-levelup" onclick="levelUp()">⬆ SUBIR DE NÍVEL</button>
             </div>
-            <div class="header-text">
+            <div class="xp-control">
+                <div class="bar-label">📊 EXPERIÊNCIA <span><input type="number" id="xp-current" value="0" oninput="updateUI()"> / <span id="xp-max-label">25</span></span></div>
+                <div class="bar-container"><div id="xp-fill" class="bar-fill xp-bar"></div></div>
+                <div class="math-btns">
+                    <button onclick="quickMath('xp', 1)">+1 XP</button>
+                    <button onclick="quickMath('xp', 5)">+5 XP</button>
+                    <button onclick="quickMath('xp', 10)">+10 XP</button>
+                    <button class="btn-reset" onclick="resetStat('xp')">Reset</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="characters-grid">
+            <div class="sheet-panel big-panel">
+                <div class="profile-pic-container"><img src="image_0.png" class="profile-pic"></div>
                 <h1>BIG</h1>
-                <p>O TANQUE DE IMPACTO</p>
-                <div class="badge-level">NÍVEL 5</div>
-            </div>
-        </header>
-
-        <div class="status-bars">
-            <div class="bar-unit">
-                <div class="bar-label">❤️ HP <span><input type="number" id="hp-current" value="44" oninput="updateUI()"> / 44</span></div>
-                <div class="bar-bg"><div id="hp-fill" class="bar-fill hp-color"></div></div>
-                <div class="math-btns">
-                    <button onclick="quickMath('hp', -5)">-5</button>
-                    <button onclick="quickMath('hp', 5)">+5</button>
+                <div class="stat-control">
+                    <div class="label-row"><span>❤️ VIDA (HP)</span><input type="number" id="hp-current" value="44" oninput="updateUI()"></div>
+                    <div class="bar-container"><div id="hp-fill" class="bar-fill hp-bar"></div></div>
+                    <div class="math-btns">
+                        <button onclick="quickMath('hp', -5)">-5</button><button onclick="quickMath('hp', -1)">-1</button>
+                        <button onclick="quickMath('hp', 1)">+1</button><button onclick="quickMath('hp', 5)">+5</button>
+                    </div>
+                </div>
+                <div class="stat-control">
+                    <div class="label-row"><span>⚡ ENERGIA</span><input type="number" id="en-current" value="34" oninput="updateUI()"></div>
+                    <div class="bar-container"><div id="en-fill" class="bar-fill en-bar"></div></div>
+                    <div class="math-btns">
+                        <button onclick="quickMath('en', -5)">-5</button><button onclick="quickMath('en', -1)">-1</button>
+                        <button onclick="quickMath('en', 1)">+1</button><button onclick="quickMath('en', 5)">+5</button>
+                    </div>
+                </div>
+                <h3>🥊 HABILIDADES ATIVAS</h3>
+                <div class="skill-card physical" onclick="useAbilityAuto('Muralha Inabalável', 8, 0, 0)">
+                    <div class="skill-head">Muralha Inabalável <span>8 EN</span></div>
+                    <p>Reduz todo dano físico recebido em 2 por 1 turno.</p>
+                </div>
+                <div class="skill-card physical" onclick="useAbilityAuto('Avanço Meteoro', 13, 0, 0)">
+                    <div class="skill-head">Avanço Meteoro <span>13 EN</span></div>
+                    <p>Dobra sua capacidade de movimento para um impacto massivo.</p>
                 </div>
             </div>
 
-            <div class="bar-unit">
-                <div class="bar-label">⚡ ENERGIA <span><input type="number" id="en-current" value="34" oninput="updateUI()"> / 34</span></div>
-                <div class="bar-bg"><div id="en-fill" class="bar-fill en-color"></div></div>
-                <div class="math-btns">
-                    <button onclick="quickMath('en', -5)">-5</button>
-                    <button onclick="quickMath('en', 5)">+5</button>
-                </div>
-            </div>
-        </div>
-
-        <h3 class="section-title">🥊 HABILIDADES DO BIG</h3>
-        <div class="skill-list">
-            <div class="skill-card physical" onclick="useAbilityAuto('Muralha Inabalável', 8, 0, 0)">
-                <div class="skill-head">Muralha Inabalável <span>8 EN</span></div>
-                <p>Reduz dano físico em 2. Imovível por 1 turno.</p>
-            </div>
-            <div class="skill-card physical" onclick="useAbilityAuto('Avanço Meteoro', 13, 0, 0)">
-                <div class="skill-head">Avanço Meteoro <span>13 EN</span></div>
-                <p>Dobra o movimento no ataque para impacto massivo.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="sheet-panel persona-panel">
-        <header class="panel-header">
-            <div class="profile-pic-container persona-border">
-                <img src="Gemini_Generated_Image_bse98gbse98gbse9.jpg" alt="Hell Biker" class="profile-pic">
-            </div>
-            <div class="header-text">
+            <div class="sheet-panel persona-panel">
+                <div class="profile-pic-container"><img src="Gemini_Generated_Image_bse98gbse98gbse9.png" class="profile-pic"></div>
                 <h1 class="orange-text">HELL BIKER</h1>
-                <p>PERSONA • CHAMAS DO ABISMO</p>
-                <div class="tags-row">
-                    <span class="tag fire">REPELE: FOGO</span>
-                    <span class="tag light">FRACO: LUZ</span>
+                <div class="stat-control">
+                    <div class="label-row"><span>🔥 MAGIA (Persona)</span><input type="number" id="mag-current" value="152" oninput="updateUI()"></div>
+                    <div class="bar-container"><div id="mag-fill" class="bar-fill mag-bar"></div></div>
+                    <div class="math-btns">
+                        <button onclick="quickMath('mag', -5)">-5</button><button onclick="quickMath('mag', -1)">-1</button>
+                        <button onclick="quickMath('mag', 1)">+1</button><button onclick="quickMath('mag', 5)">+5</button>
+                    </div>
                 </div>
-            </div>
-        </header>
-
-        <div class="status-bars">
-            <div class="bar-unit">
-                <div class="bar-label">🔥 MAGIA <span><input type="number" id="mag-current" value="152" oninput="updateUI()"> / 152</span></div>
-                <div class="bar-bg"><div id="mag-fill" class="bar-fill mag-color"></div></div>
-                <div class="math-btns">
-                    <button onclick="quickMath('mag', -10)">-10</button>
-                    <button onclick="quickMath('mag', 10)">+10</button>
+                <h3>🔥 PODERES DA PERSONA</h3>
+                <div class="skill-card magical" onclick="useAbilityAuto('Reação de Tungstênio', 0, 0, 20)">
+                    <div class="skill-head">Reação de Tungstênio <span>20 MAG</span></div>
+                    <p>Reflete 100% do dano recebido + modificador de 4.</p>
+                </div>
+                <div class="skill-card special-sun" onclick="useAbilityAuto('Soco Solar', 20, 0, 40)">
+                    <div class="skill-head">☀️ Soco Solar <span>40 MAG / 20 EN</span></div>
+                    <p>Ignora Defesa. Dano: 1d20 + 5d12 + 4.</p>
                 </div>
             </div>
         </div>
 
-        <h3 class="section-title orange-text">🔥 PODERES DA PERSONA</h3>
-        <div class="skill-list">
-            <div class="skill-card magical" onclick="useAbilityAuto('Reação de Tungstênio', 0, 0, 20)">
-                <div class="skill-head">Reação de Tungstênio <span>20 MAG</span></div>
-                <p>Reflete 100% do dano + 4. Dano recebido é 0.</p>
+        <footer class="footer-dice">
+            <div id="dice-result" class="dice-result">Aguardando rolo...</div>
+            <div class="dice-selector">Quantidade: <input type="number" id="dice-count" value="1"></div>
+            <div class="dice-grid">
+                <button onclick="rollMultiple(4)">D4</button><button onclick="rollMultiple(6)">D6</button>
+                <button onclick="rollMultiple(8)">D8</button><button onclick="rollMultiple(10)">D10</button>
+                <button onclick="rollMultiple(12)">D12</button><button onclick="rollMultiple(20)">D20</button>
+                <button onclick="rollMultiple(100)">D100</button>
             </div>
-            <div class="skill-card magical special-sun" onclick="useAbilityAuto('Soco Solar', 20, 0, 40)">
-                <div class="skill-head">☀️ Soco Solar <span>40 MAG / 20 EN</span></div>
-                <p>Ignora Defesa. Dano: 1d20 + 5d12 + 4.</p>
-            </div>
+        </footer>
+    </main>
+
+    <aside class="sidebar side-right">
+        <div class="sidebar-box">
+            <h3>📜 REGRAS DO JOGO</h3>
+            <ul class="rules-list">
+                <li>🎲 Atributos: d20s pelo valor.</li>
+                <li>❤️ Const: +1d10 Vida ao subir.</li>
+                <li>⚡ Int: +1d10 Energia ao subir.</li>
+                <li>⚔️ For/Des: +2 Mod. de dano/alcance.</li>
+                <li>🧩 Puzzles: Não repetir ação de aliado.</li>
+            </ul>
         </div>
-    </div>
-
-</div>
-
-<div class="footer-controls">
-    <div id="dice-result" class="global-result">Aguardando rolo...</div>
-    <div class="dice-box">
-        <input type="number" id="dice-count" value="4">
-        <button class="btn-yellow" onclick="rollAttributes()">Rolar Atributo (d20)</button>
-        <button class="btn-blue" onclick="rollD6()">Dano Impacto (1d8+5)</button>
-    </div>
+        <div class="sidebar-box">
+            <h3>📋 NOTAS DA SESSÃO</h3>
+            <textarea class="side-area" id="notes-area" placeholder="Anotações gerais aqui..."></textarea>
+        </div>
+    </aside>
 </div>
 
 <script src="script.js"></script>
