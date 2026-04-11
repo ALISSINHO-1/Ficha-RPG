@@ -20,18 +20,8 @@ body { background: var(--bg-black); color: white; font-family: 'Segoe UI', sans-
 .sidebar ul { padding-left: 15px; font-size: 0.85rem; color: #ccc; margin-bottom: 20px; }
 
 .side-area {
-    width: 100%;
-    height: 350px;
-    background: #000;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: #2ed573;
-    padding: 10px;
-    font-size: 0.85rem;
-    resize: none;
-    outline: none;
-    font-family: inherit;
-    box-sizing: border-box;
+    width: 100%; height: 350px; background: #000; border: 1px solid var(--border); border-radius: 8px;
+    color: #2ed573; padding: 10px; font-size: 0.85rem; resize: none; outline: none; box-sizing: border-box;
 }
 
 .main-content { display: flex; flex-direction: column; gap: 20px; }
@@ -52,9 +42,10 @@ h1 { font-family: 'Changa'; font-size: 1.8rem; text-align: center; margin: 0 0 1
 .math-btns { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 5px; margin-bottom: 15px; }
 .math-btns button { flex: 1; background: #1a1a20; border: 1px solid var(--border); color: white; padding: 6px; cursor: pointer; border-radius: 4px; font-size: 0.75rem; }
 
-.skill-card { background: #121217; padding: 12px; border-radius: 8px; margin-bottom: 10px; cursor: pointer; border-left: 4px solid var(--blue); }
+.skill-card { background: #121217; padding: 12px; border-radius: 8px; margin-bottom: 10px; cursor: pointer; border-left: 4px solid var(--purple); }
 .skill-head { display: flex; justify-content: space-between; font-weight: bold; color: var(--yellow); font-size: 0.9rem; }
 .skill-card p { margin: 5px 0 0 0; font-size: 0.75rem; color: #aaa; line-height: 1.3; }
+.physical { border-left-color: var(--blue); }
 .special-sun { border-left-color: var(--yellow); background: linear-gradient(to right, #121217, #332500); }
 
 .footer-dice { background: var(--card-dark); padding: 25px; border-radius: 15px; border: 1px solid var(--border); text-align: center; }
@@ -62,5 +53,5 @@ h1 { font-family: 'Changa'; font-size: 1.8rem; text-align: center; margin: 0 0 1
 .dice-grid { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 15px; }
 .dice-grid button { background: transparent; border: 2px solid var(--yellow); color: var(--yellow); padding: 10px 15px; cursor: pointer; border-radius: 8px; font-weight: bold; }
 
-input[type=number] { background: transparent; border: none; color: white; text-align: right; width: 60px; font-size: 1.2rem; font-weight: bold; outline: none; -moz-appearance: textfield; }
+input[type=number] { background: transparent; border: none; color: white; text-align: right; width: 60px; font-size: 1.2rem; outline: none; -moz-appearance: textfield; }
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; }

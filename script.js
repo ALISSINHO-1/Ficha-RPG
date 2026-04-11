@@ -29,30 +29,30 @@ function quickMath(stat, val) {
 
 function resetStat(stat) {
     const input = document.getElementById(`${stat}-current`);
-    if (input) {
-        input.value = 0;
-        updateUI();
-    }
+    if (input) { input.value = 0; updateUI(); }
 }
 
 function rollMultiple(sides) {
     const count = parseInt(document.getElementById('dice-count').value) || 1;
-    let total = 0;
-    let rolls = [];
+    let total = 0, rolls = [];
     for (let i = 0; i < count; i++) {
         let r = Math.floor(Math.random() * sides) + 1;
-        rolls.push(r);
-        total += r;
+        rolls.push(r); total += r;
     }
     document.getElementById('dice-result').innerHTML = `🎲 D${sides}: <strong>${total}</strong> <small>(${rolls.join('+')})</small>`;
 }
 
 function useAbilityAuto(name, enCost, hpCost, magCost) {
     const curEn = parseInt(document.getElementById('en-current').value);
+    const curHp = parseInt(document.getElementById('hp-current').value);
     const curMag = parseInt(document.getElementById('mag-current').value);
+    
     if (enCost > 0 && curEn < enCost) return alert("Energia insuficiente!");
+    if (hpCost > 0 && curHp < hpCost) return alert("Vida insuficiente!");
     if (magCost > 0 && curMag < magCost) return alert("Magia insuficiente!");
+    
     quickMath('en', -enCost);
+    quickMath('hp', -hpCost);
     quickMath('mag', -magCost);
     document.getElementById('dice-result').innerHTML = `✨ Usou: <strong>${name}</strong>`;
 }
@@ -67,7 +67,6 @@ function levelUp() {
     updateUI();
 }
 
-// Salva o texto automaticamente para não sumir ao atualizar
 function setupAutoSave() {
     const areas = ['inv-area', 'notes-area'];
     areas.forEach(id => {
@@ -77,7 +76,4 @@ function setupAutoSave() {
     });
 }
 
-window.onload = () => {
-    updateUI();
-    setupAutoSave();
-};
+window.onload = () => { updateUI(); setupAutoSave(); };
