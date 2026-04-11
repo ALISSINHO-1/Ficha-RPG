@@ -27,7 +27,7 @@
         </div>
         <div class="sidebar-box">
             <h3>🎒 INVENTÁRIO (BIG)</h3>
-            <textarea class="side-area" id="inv-area" placeholder="Digite os itens aqui..."></textarea>
+            <textarea class="side-area" id="inv-area" placeholder="Digite seus itens aqui..."></textarea>
         </div>
     </aside>
 
@@ -70,13 +70,17 @@
                     </div>
                 </div>
                 <h3>🥊 HABILIDADES ATIVAS</h3>
+                <div class="skill-card physical reaction" onclick="useAbilityAuto('Paciência Curta', 3, 0, 0)">
+                    <div class="skill-head">⚡ Paciência Curta <span>3 EN</span></div>
+                    <p><strong>Gatilho:</strong> Inimigo entra ou sai do alcance. Golpe preventivo (+4 dano direto). Reduz movimento do alvo a 0.</p>
+                </div>
                 <div class="skill-card physical" onclick="useAbilityAuto('Muralha Inabalável', 8, 0, 0)">
                     <div class="skill-head">Muralha Inabalável <span>8 EN</span></div>
                     <p>Reduz todo dano físico recebido em 2 por 1 turno.</p>
                 </div>
                 <div class="skill-card physical" onclick="useAbilityAuto('Avanço Meteoro', 13, 0, 0)">
                     <div class="skill-head">Avanço Meteoro <span>13 EN</span></div>
-                    <p>Dobra sua capacidade de movimento para impacto massivo.</p>
+                    <p>Dobra sua capacidade de movimento para um impacto massivo.</p>
                 </div>
             </div>
 
@@ -94,15 +98,15 @@
                 <h3>🔥 PODERES DA PERSONA</h3>
                 <div class="skill-card magical" onclick="useAbilityAuto('Agilao', 8, 0, 0)">
                     <div class="skill-head">Agilao <span>8 EN</span></div>
-                    <p>Fogo médio. Teste: Inteligência. Dano: 2d8.</p>
+                    <p>Ataca um inimigo com um fogo médio. Teste: Inteligência. Dano: 2d8.</p>
                 </div>
                 <div class="skill-card magical" onclick="useAbilityAuto('Mudoon', 8, 8, 0)">
                     <div class="skill-head">Mudoon <span>8 EN / 8 HP</span></div>
-                    <p>Maldição. Se o alvo tirar 4 ou menos, morre instantaneamente (Hit Kill). Teste: Inteligência.</p>
+                    <p>Ataca com maldição. Caso o inimigo tire 4 ou menos no teste, morre instantaneamente.</p>
                 </div>
                 <div class="skill-card magical" onclick="useAbilityAuto('Reação de Tungstênio', 0, 0, 20)">
                     <div class="skill-head">Reação de Tungstênio <span>20 MAG</span></div>
-                    <p>Reflete 100% do dano recebido + 4.</p>
+                    <p>Reflete 100% do dano recebido + modificador de 4.</p>
                 </div>
                 <div class="skill-card special-sun" onclick="useAbilityAuto('Soco Solar', 20, 0, 40)">
                     <div class="skill-head">☀️ Soco Solar <span>40 MAG / 20 EN</span></div>
@@ -113,7 +117,7 @@
 
         <footer class="footer-dice">
             <div id="dice-result" class="dice-result">Aguardando rolo...</div>
-            <div class="dice-selector">Qtd: <input type="number" id="dice-count" value="1"></div>
+            <div class="dice-selector">Quantidade: <input type="number" id="dice-count" value="1"></div>
             <div class="dice-grid">
                 <button onclick="rollMultiple(4)">D4</button><button onclick="rollMultiple(6)">D6</button>
                 <button onclick="rollMultiple(8)">D8</button><button onclick="rollMultiple(10)">D10</button>
@@ -127,16 +131,15 @@
         <div class="sidebar-box">
             <h3>📜 REGRAS DO JOGO</h3>
             <ul class="rules-list">
-                <li>🎲 Atributos: d20s pelo valor.</li>
-                <li>❤️ Const: +1d10 Vida ao subir.</li>
-                <li>⚡ Int: +1d10 Energia ao subir.</li>
-                <li>⚔️ For/Des: +2 Mod. dano/alcance.</li>
-                <li>🧩 Puzzles: Não repetir ação de aliado.</li>
+                <li>🎲 <strong>Atributos:</strong> d20s pelo valor do atributo.</li>
+                <li>❤️ <strong>Construção:</strong> +1d10 Vida ao aumentar atributo.</li>
+                <li>⚡ <strong>Inteligência:</strong> +1d10 Energia ao aumentar atributo.</li>
+                <li>🧩 <strong>Puzzles:</strong> Proibido repetir a mesma ação de aliado.</li>
             </ul>
         </div>
         <div class="sidebar-box">
             <h3>📋 NOTAS DA SESSÃO</h3>
-            <textarea class="side-area" id="notes-area" placeholder="Anotações gerais aqui..."></textarea>
+            <textarea class="side-area" id="notes-area" placeholder="Anotações importantes..."></textarea>
         </div>
     </aside>
 </div>

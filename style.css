@@ -15,9 +15,7 @@ body { background: var(--bg-black); color: white; font-family: 'Segoe UI', sans-
 }
 
 .sidebar { background: var(--card-dark); padding: 15px; border-radius: 12px; border: 1px solid var(--border); height: fit-content; position: sticky; top: 20px; }
-.sidebar h3 { font-family: 'Changa'; color: var(--yellow); font-size: 1rem; border-bottom: 1px solid #333; padding-bottom: 5px; margin: 15px 0 10px 0; }
-.sidebar h3:first-child { margin-top: 0; }
-.sidebar ul { padding-left: 15px; font-size: 0.85rem; color: #ccc; margin-bottom: 20px; }
+.sidebar h3 { font-family: 'Changa'; color: var(--yellow); font-size: 1rem; border-bottom: 1px solid #333; padding-bottom: 5px; margin-bottom: 10px; }
 
 .side-area {
     width: 100%; height: 350px; background: #000; border: 1px solid var(--border); border-radius: 8px;
@@ -42,10 +40,15 @@ h1 { font-family: 'Changa'; font-size: 1.8rem; text-align: center; margin: 0 0 1
 .math-btns { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 5px; margin-bottom: 15px; }
 .math-btns button { flex: 1; background: #1a1a20; border: 1px solid var(--border); color: white; padding: 6px; cursor: pointer; border-radius: 4px; font-size: 0.75rem; }
 
-.skill-card { background: #121217; padding: 12px; border-radius: 8px; margin-bottom: 10px; cursor: pointer; border-left: 4px solid var(--purple); }
-.skill-head { display: flex; justify-content: space-between; font-weight: bold; color: var(--yellow); font-size: 0.9rem; }
-.skill-card p { margin: 5px 0 0 0; font-size: 0.75rem; color: #aaa; line-height: 1.3; }
-.physical { border-left-color: var(--blue); }
+.skill-card { background: #121217; padding: 12px; border-radius: 8px; margin-bottom: 10px; cursor: pointer; border-left: 4px solid var(--blue); transition: 0.2s; }
+.skill-card:hover { background: #1c1c24; transform: scale(1.02); }
+
+/* CORREÇÃO DA LINHA VERDE */
+.reaction { 
+    border-left: 4px solid var(--green) !important; 
+    background: linear-gradient(to right, #121217, #0d2114); 
+}
+
 .special-sun { border-left-color: var(--yellow); background: linear-gradient(to right, #121217, #332500); }
 
 .footer-dice { background: var(--card-dark); padding: 25px; border-radius: 15px; border: 1px solid var(--border); text-align: center; }
