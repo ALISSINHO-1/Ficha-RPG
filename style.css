@@ -1,5 +1,5 @@
 :root {
-    --bg-black: #08080a;
+    --bg-black: #050507;
     --card-dark: #121217;
     --red: #ff3e3e;
     --blue: #1e90ff;
@@ -7,157 +7,99 @@
     --orange: #ff6a00;
     --purple: #a55eea;
     --border: #25252b;
-    --text-gray: #a0a0a5;
 }
 
-body {
-    background-color: var(--bg-black);
-    color: white;
-    font-family: 'Segoe UI', sans-serif;
+body { 
+    background: var(--bg-black); 
+    color: white; 
+    font-family: 'Segoe UI', sans-serif; 
+    margin: 0; 
     padding: 20px;
+}
+
+.main-wrapper {
     display: flex;
-    justify-content: center;
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto 120px auto;
 }
 
-.container {
-    width: 100%;
-    max-width: 900px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.character-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background: var(--card-dark);
-    padding: 20px;
-    border-radius: 12px;
-    border-left: 5px solid var(--red);
-}
-
-.profile-pic-container {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid var(--red);
-}
-
-.profile-pic { width: 100%; height: 100%; object-fit: cover; }
-
-/* AJUSTE DOS INPUTS E SETAS */
-.bars-section {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-}
-
-.stat-control {
-    background: var(--card-dark);
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-}
-
-.label-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; margin-bottom: 8px; }
-
-.inputs input {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid #333;
-    color: white;
-    width: 65px; /* Mais largo para dar espaço */
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.1rem;
-    padding: 4px 5px; /* Espaçamento interno */
-    border-radius: 4px;
-}
-
-.bar-container {
-    background: #000;
-    height: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.bar-fill { height: 100%; border-radius: 5px; transition: 0.4s; }
-.hp-bar { background: var(--red); box-shadow: 0 0 10px var(--red); }
-.en-bar { background: var(--blue); box-shadow: 0 0 10px var(--blue); }
-.mag-bar { background: var(--purple); box-shadow: 0 0 10px var(--purple); }
-
-.quick-math { display: flex; gap: 5px; }
-.quick-math button {
+.sheet-panel {
     flex: 1;
-    background: #1a1a20;
+    background: #0a0a0e;
+    padding: 25px;
+    border-radius: 15px;
     border: 1px solid var(--border);
-    color: white;
-    cursor: pointer;
-    font-size: 0.7rem;
-    padding: 6px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* ATRIBUTOS */
-.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-.stat-card {
-    background: var(--card-dark);
-    padding: 15px;
-    text-align: center;
-    border-radius: 8px;
-    border-bottom: 3px solid var(--red);
-    cursor: pointer;
-}
-.stat-card strong { font-size: 2rem; color: var(--yellow); font-family: 'Changa'; display: block; }
+.big-panel { border-top: 6px solid var(--red); }
+.persona-panel { border-top: 6px solid var(--orange); }
 
-/* PERSONA */
-.persona-section {
-    background: var(--card-dark);
-    padding: 20px;
-    border-radius: 12px;
-    border: 2px solid var(--orange);
-}
+/* CABEÇALHO */
+.panel-header { display: flex; gap: 18px; align-items: center; margin-bottom: 25px; }
+.profile-pic-container { width: 75px; height: 75px; border-radius: 50%; overflow: hidden; border: 2px solid var(--red); }
+.persona-border { border-color: var(--orange); }
+.profile-pic { width: 100%; height: 100%; object-fit: cover; }
+.header-text h1 { margin: 0; font-family: 'Changa'; font-size: 1.6rem; letter-spacing: 1px; }
+.header-text p { margin: 0; font-size: 0.8rem; color: #888; text-transform: uppercase; }
+.orange-text { color: var(--orange); }
 
-.persona-header { display: flex; gap: 20px; align-items: center; margin-bottom: 20px; }
-.persona-img { width: 120px; border-radius: 8px; border: 2px solid var(--orange); box-shadow: 0 0 10px var(--orange); }
+/* BARRAS E INPUTS (CORRIGIDO ESPAÇAMENTO) */
+.status-bars { display: flex; flex-direction: column; gap: 20px; margin-bottom: 30px; }
+.bar-label { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; margin-bottom: 8px; font-weight: bold; }
 
-.tag { font-size: 0.7rem; padding: 3px 7px; border-radius: 4px; font-weight: bold; margin-right: 5px; }
-.tag.fire { color: var(--orange); border: 1px solid var(--orange); }
-.tag.wind { color: #2ed573; border: 1px solid #2ed573; }
-.tag.light { color: #fff; border: 1px solid #fff; }
-
-.persona-abilities { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.ab-box-mag {
-    background: #1a1a20;
-    padding: 15px;
-    border-radius: 8px;
-    border-left: 4px solid var(--purple);
-    cursor: pointer;
-}
-.ab-head { display: flex; justify-content: space-between; font-weight: bold; color: var(--yellow); margin-bottom: 5px; }
-.tag-mag { color: var(--purple); font-size: 0.8rem; }
-.special-sun { border-left-color: var(--yellow); background: linear-gradient(to right, #1a1a20, #3d2b00); }
-
-/* DADOS */
-.dice-roller { background: var(--card-dark); padding: 20px; border-radius: 12px; }
-.dice-result {
-    background: #000;
-    padding: 15px;
-    margin-top: 15px;
-    text-align: center;
-    color: var(--yellow);
-    font-size: 1.2rem;
-    border: 1px solid var(--yellow);
-    font-family: 'Changa';
+.bar-label input { 
+    background: #1a1a20; 
+    border: 1px solid #333; 
+    color: white; 
+    width: 65px; /* Largura para as setas não colarem */
+    text-align: center; 
+    padding: 5px; 
+    border-radius: 4px; 
+    font-size: 1.1rem;
+    font-weight: bold;
 }
 
-.note-area {
-    width: 100%;
-    height: 100px;
-    background: #08080a;
-    color: #ccc;
-    border: 1px solid var(--border);
-    padding: 10px;
-    border-radius: 8px;
-    box-sizing: border-box;
+.bar-bg { background: #000; height: 14px; border-radius: 7px; border: 1px solid #222; overflow: hidden; }
+.bar-fill { height: 100%; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.hp-color { background: var(--red); box-shadow: 0 0 15px var(--red); }
+.en-color { background: var(--blue); box-shadow: 0 0 15px var(--blue); }
+.mag-color { background: var(--purple); box-shadow: 0 0 15px var(--purple); }
+
+.math-btns { display: flex; gap: 8px; margin-top: 8px; }
+.math-btns button { flex: 1; background: #1a1a20; border: 1px solid var(--border); color: white; cursor: pointer; padding: 6px; border-radius: 4px; font-size: 0.75rem; }
+
+/* HABILIDADES */
+.section-title { font-family: 'Changa'; font-size: 1.1rem; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 15px; text-transform: uppercase; }
+.skill-list { display: flex; flex-direction: column; gap: 12px; }
+.skill-card { 
+    background: var(--card-dark); 
+    padding: 15px; 
+    border-radius: 10px; 
+    cursor: pointer; 
+    transition: 0.3s; 
+    border-left: 5px solid transparent; 
 }
+.skill-card:hover { transform: translateX(5px); background: #1c1c24; }
+.physical { border-left-color: var(--blue); }
+.magical { border-left-color: var(--purple); }
+.special-sun { background: linear-gradient(to right, #121217, #463200); border-left-color: var(--yellow); }
+
+.skill-head { display: flex; justify-content: space-between; font-weight: bold; font-size: 1rem; margin-bottom: 6px; color: var(--yellow); }
+.skill-head span { font-size: 0.8rem; color: #fff; opacity: 0.7; }
+.skill-card p { margin: 0; font-size: 0.8rem; color: #bbb; line-height: 1.4; }
+
+/* CONTROLES FIXOS */
+.footer-controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #08080a; padding: 20px; border-top: 2px solid var(--border);
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+    z-index: 100;
+}
+.global-result { color: var(--yellow); font-family: 'Changa'; font-size: 1.4rem; text-shadow: 0 0 10px rgba(255,184,0,0.3); }
+.dice-box { display: flex; gap: 15px; align-items: center; }
+.dice-box input { background: #000; border: 1px solid #444; color: white; padding: 10px; width: 60px; text-align: center; font-size: 1.1rem; border-radius: 6px; }
+
+.btn-yellow { border: 2px solid var(--yellow); color: var(--yellow); background: transparent; padding: 10px 20px; cursor: pointer; font-weight: bold; border-radius: 6px; }
+.btn-blue { border: 2px solid var(--blue); color: var(--blue); background: transparent; padding: 10px 20px; cursor: pointer; font-weight: bold; border-radius: 6px; }

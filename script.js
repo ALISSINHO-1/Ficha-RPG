@@ -23,33 +23,28 @@ function quickMath(stat, val) {
 }
 
 function useAbilityAuto(name, enCost, hpCost, magCost) {
-    const currentEn = parseInt(document.getElementById('en-current').value);
-    const currentMag = parseInt(document.getElementById('mag-current').value);
-    
-    if (enCost > 0 && currentEn < enCost) return alert("Energia Insuficiente!");
-    if (magCost > 0 && currentMag < magCost) return alert("Magia Insuficiente!");
+    const curEn = parseInt(document.getElementById('en-current').value);
+    const curMag = parseInt(document.getElementById('mag-current').value);
+
+    if (enCost > 0 && curEn < enCost) return alert("❌ ENERGIA INSUFICIENTE!");
+    if (magCost > 0 && curMag < magCost) return alert("❌ MAGIA INSUFICIENTE!");
 
     quickMath('en', -enCost);
     quickMath('hp', -hpCost);
     quickMath('mag', -magCost);
 
-    document.getElementById('dice-result').innerHTML = `🔥 <strong>${name.toUpperCase()}</strong> ATIVADA!`;
+    document.getElementById('dice-result').innerHTML = `🔥 <strong>${name.toUpperCase()}</strong> EXECUTADA!`;
 }
 
 function rollAttributes() {
-    const count = parseInt(document.getElementById('dice-count').value);
+    const count = document.getElementById('dice-count').value;
     let rolls = Array.from({length: count}, () => Math.floor(Math.random() * 20) + 1);
-    document.getElementById('dice-result').innerHTML = `Dados: [${rolls.join(', ')}] <br> Maior: <strong>${Math.max(...rolls)}</strong>`;
+    document.getElementById('dice-result').innerHTML = `Dados: [${rolls.join(', ')}] | Maior: <strong>${Math.max(...rolls)}</strong>`;
 }
 
 function rollD6() {
-    const d = Math.floor(Math.random() * 8) + 1;
-    document.getElementById('dice-result').innerHTML = `Dano: ${d} + 5 = <strong>${d+5}</strong>`;
-}
-
-function setDiceRoller(val, name) {
-    document.getElementById('dice-count').value = val;
-    document.getElementById('dice-result').innerText = `Pronto para rolar ${name}...`;
+    const d = Math.floor(Math.random() * 8) + 1; // 1d8
+    document.getElementById('dice-result').innerHTML = `👊 Impacto: (${d}) + 5 = <strong>${d+5}</strong>`;
 }
 
 window.onload = updateUI;
